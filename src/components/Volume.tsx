@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { usePrevious } from 'react-use';
+// import { usePrevious } from 'react-use';
 import RangeSlider, { RangeSliderPosition } from '@gilbarbara/react-range-slider';
 
 import ClickOutside from './ClickOutside';
@@ -64,13 +64,13 @@ export default function Volume(props: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [volumeState, setVolumeState] = useState(volume);
   const timeoutRef = useRef<number>();
-  const previousVolume = usePrevious(volume);
+//   const previousVolume = usePrevious(volume);
 
   useEffect(() => {
-    if (previousVolume !== volume && volume !== volumeState) {
+    if (volume !== volumeState) {
       setVolumeState(volume);
     }
-  }, [previousVolume, volume, volumeState]);
+  }, [volume, volumeState]);
 
   const handleClick = () => {
     setIsOpen(s => !s);

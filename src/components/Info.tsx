@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { useMount, usePrevious, useUnmount } from 'react-use';
+// import { useMount, usePrevious, useUnmount } from 'react-use';
+import pkg2 from 'react-use';
+const { useMount, useUnmount } = pkg2;
+
 
 import Favorite from './icons/Favorite';
 import FavoriteOutline from './icons/FavoriteOutline';
@@ -124,7 +127,7 @@ export default function Info(props: Props) {
   } = props;
   const [isSaved, setIsSaved] = useState(false);
   const isMounted = useRef(false);
-  const previousId = usePrevious(id);
+//   const previousId = usePrevious(id);
 
   const updateState = (state: boolean) => {
     if (!isMounted.current) {
@@ -161,7 +164,7 @@ export default function Info(props: Props) {
   });
 
   useEffect(() => {
-    if (showSaveIcon && previousId !== id && id) {
+    if (showSaveIcon && id) {
       updateState(false);
 
       setStatus();
